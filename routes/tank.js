@@ -1,9 +1,19 @@
-get=(req,res,next)=>{
-req.models.Tank.find().then((tanks)=>{
-returnres.send(tanks);
-}).catch((error)=>{
-next(error)
-})
+//dotify = require('node-dotify');
+
+get = (req, res, next) => {
+  var query;
+  if(req.query.tankname) {
+    query = req.models.Tank.find({tankname: req.query.tankname})
+  }
+  else
+  {
+    query = req.models.Tank.find()
+  }
+
+
+  query.exec().then((tanks) => {
+      return res.send(tanks);
+    }).catch((error) => next(error))
 }
  
 post=(req,res,next)=>{
@@ -11,24 +21,24 @@ req.models.Tank.create({
   tankname: req.body.tankname,
   crew: req.body.crew,
   velocity: req.body.velocity,
-  horsepower: req.body.horsepower
+  horsepower: req.body.horsepower,
  //tankname:{
 // crew:req.body.tankname.crew,
  //velocity:req.body.tankname.velocity,
  //horsepower:req.body.tankname.horsepower
 //}
-}).then((tank)=>{
-returnres.status(201).send(tank)
+}).then((tank)=> {
+return res.status(201).send(tank)
 }).catch((error)=>{
-next(error)
-})
+next(error)})
 }
  
-getById=(req,res,next)=>{
-req.models.Tank.findById(req.params.id).then((tank)=>{
-returnres.send(tank);
-})
+getById=(req,res,next) => {
+req.models.Tank.findById(req.params.id).then((tank) => {
+return res.send(tank);
+}).catch((error) => next(error))
 }
+
 deleteById = (req, res, next) => {
   req.models.Tank.findByIdAndDelete(req.params.id).then((deleted)=> {
     if (deleted)
@@ -90,7 +100,7 @@ const patch = (req, res, next) => {
     returnNewDocument: true,
     new: true,
   }).then((tank) => {
-    console.log("user after request:", tank)
+    console.log("tank after request:", tank)
     res.send(tank)
   }).catch((error) => next(error))
 }
