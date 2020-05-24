@@ -1,9 +1,11 @@
 import React from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.css';
 import Header from './Header';
 import Home from "./Home";
 import Guest from "./Guest";
 import Login from "./Login";
+
 
 
 function App() {
