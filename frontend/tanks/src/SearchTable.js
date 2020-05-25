@@ -4,7 +4,9 @@ import SearchBar from "./SearchBar";
 export default class SearchTable extends Component {
     render() {
         return (
-            <div class="col-4">
+            <div border style={{
+                backgroundColor: '#ffffff'
+                                    }}>
                 <SearchBar></SearchBar>
             </div>
         )

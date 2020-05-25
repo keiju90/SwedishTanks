@@ -5,8 +5,10 @@ import {Link} from 'react-router-dom';
 export default class Header extends Component {
     render() {
         return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <Link to="/" className="navbar-brand">
+        <nav className="navbar navbar-expand-lg navbar-light" style={{
+            backgroundColor: '#484747'
+                                }}> 
+        <Link to="/" className="navbar-brand" style={{color: "#c2d671" }}>
             Swedish Tanks
         </Link>
 
@@ -18,10 +20,10 @@ export default class Header extends Component {
             <ul className="navbar-nav ml-auto">
         
                 <li className="nav-item">
-                    <Link to="Guest" className="nav-link">Guest</Link>
+                    <Link to="Guest" className="nav-link" style={{color: "#c2d671" }}>Guest</Link>
                 </li>
                 <li className="nav-item">
-                <Link to="Login" className="nav-link">Admin log in </Link>
+                <Link to="Login" className="nav-link" style={{color: "#c2d671" }}>Admin log in </Link>
                 </li>
                 
             </ul>

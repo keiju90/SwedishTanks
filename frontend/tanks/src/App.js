@@ -12,7 +12,8 @@ function App() {
 
   return (
     <BrowserRouter>
-    <div className="App">
+    <div className="App" 
+    style={{backgroundColor: '#dddddd'}}>
       <Header></Header>
       <main>
         <Switch>
