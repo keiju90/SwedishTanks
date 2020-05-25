@@ -7,6 +7,7 @@ export default class Results extends Component {
             <div>
                 <p>Inside Results component</p>
                 <Resultspage></Resultspage>
+
             </div>
         )
     }

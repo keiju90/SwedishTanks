@@ -47,3 +47,31 @@ export default class SearchBar extends Component {
         )
     }
 }
+
+// **********KOD FR ÅSA =) *****************
+// Form = (props) => {
+//     return (
+//       <form className="wrapper" onSubmit={(e)=>props.addNewStudent(e)}>
+//         <h3>Add student</h3>
+//         <div className="form-group">
+//           <label>Email address </label>
+//           <input onChange={e=>{props.handleInputToNewStudent(e)}} required type="email" className="form-control" id="email" placeholder="email..."/>
+//         </div>
+//         <div className="form-group">
+//           <label>Name</label>
+//           <input onChange={e=>{props.handleInputToNewStudent(e)}} required type="text" className="form-control" id="name" placeholder="name..."/>
+//         </div>
+//         <div className="form-group">
+//           <label>Street</label>
+//           <input onChange={e=>{props.handleInputToNewStudent(e)}} required type="text" className="form-control" id="adressStreet" placeholder="street..."/>
+//         </div>
+//         <div className="form-group">
+//           <label>Areacode</label>
+//           <input onChange={e=>{props.handleInputToNewStudent(e)}} required type="text" className="form-control" id="areacode" placeholder="areacode..."/>
+//         </div>
+//         <div className="form-group">
+//           <label>City</label>
+//           <input onChange={e=>{props.handleInputToNewStudent(e)}} required type="text" className="form-control" id="city" placeholder="city..."/>
+//         </div>
+//         <button type="submit" className="btn btn-info" >Submit new student</button>
+//       </form>
