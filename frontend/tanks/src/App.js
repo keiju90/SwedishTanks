@@ -31,23 +31,21 @@ function App() {
 export default App;
 
 
-// ***** KOD FR ÅSA ****************
+// // ***** KOD FR ÅSA ****************
 // import React, { useState } from 'react';
 // import './App.css';
 
- 
+
 
 // import AddTankFrom from './components/AddTankForm'
 // import tanks from './components/Tanks'
 
- 
 
 
 // function App() {
 //   const [newTanks, setNewTanks] = useState({});
 //   const [tanks, setTanks] = useState([]);
 
- 
 
 //   const handleInputToNewTank= e => setNewTank({...newTank, [e.target.id]: e.target.value});
   
@@ -56,7 +54,6 @@ export default App;
 //     setTanks([...tanks, newTank]);
 //   }
 
- 
 
 //   const removeTanks = e => {
 //     const nameToDelete = e.target.parentNode.firstElementChild.innerText
@@ -65,7 +62,7 @@ export default App;
   
   
 //   const fetchTanks = () => {
-//     fetch('http://localhost:3000/tanks')
+//     fetch('http://localhost:4000/tanks')
 //     .then(res => res.json())
 //     .then(data => setTanks(data.tanks))
 //   }
@@ -79,6 +76,5 @@ export default App;
 //   );
 // }
 
- 
 
 // export default App;
