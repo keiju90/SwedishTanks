@@ -13,8 +13,9 @@ get = (req, res, next) => {
 
   query.exec().then((tanks) => {
       return res.send(tanks);
-    }).catch((error) => next(error))
-}
+    }).catch((error) => 
+	next(error)
+    )}
  
 post=(req,res,next)=>{
 req.models.Tank.create({
