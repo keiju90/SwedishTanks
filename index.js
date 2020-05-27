@@ -1,4 +1,8 @@
 const express = require("express");
+ apideleteasa
+=======
+var cors = require("cors");
+master
 const middlewares = require("./middlewares")
 const routes = require("./routes")
 const app = express();
@@ -21,8 +25,12 @@ app.use((req, res, next) => {
   req.models = db.models
   next()
 })
+apideleteasa
 
 
+
+app.use(cors());
+ master
 app.use('/', routes)
 app.use('/api', routes)
 app.use(middlewares.mongoError)
