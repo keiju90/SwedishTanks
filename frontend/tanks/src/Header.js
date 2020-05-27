@@ -9,7 +9,7 @@ export default class Header extends Component {
             backgroundColor: '#484747'
                                 }}> 
         <Link to="/" className="navbar-brand" style={{color: "#c2d671" }}>
-            Swedish Tanks
+            Swedish Tanks 
         </Link>
 
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

@@ -5,11 +5,11 @@ import React from 'react'
         <div>
           <h1>Tanks List</h1>
           {tanks.map((tank) => (
-            <div key="">
+            <div>
               <div>
-                <h1>{tank.tankname}</h1>
+                <h3>{tank.tankname}</h3>
                 <h6>{tank.crew}</h6>
-                <p>{tank.velocity}</p>
+                <h6>{tank.velocity}</h6>
               </div>
             </div>
           ))} 
