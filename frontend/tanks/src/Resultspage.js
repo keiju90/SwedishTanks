@@ -1,40 +1,30 @@
 import React, { Component } from 'react'
+import Tanks from "./Tanks";
 
-export default class Resultspage extends Component {
-    render() {
-        return (
-            <div>
-                <p>This is resultspage component</p>
+class Resultspage extends Component {
+// tanks array that stores all tanks from db 
+  state = {
+    tanks: []
+  }
 
+  //fetches tanks from db 
+  componentDidMount() {
+    fetch('http://localhost:4000/tanks')
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({ tanks: data })
+    })
+    .catch(console.log)
+  }
 
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+      <Tanks tanks={this.state.tanks}/>
+      </div>
+    );
+  }
 }
 
-// *********************KOD FRÅN ÅSA**********
-// import React, { useEffect, useState} from 'react'
+export default Resultspage;
 
-// const Tanks = (props) => {
-
-//   useEffect(()=>{
-//     props.fetch();
-//   },[])
-    
-//   return (
-//     <div className="wrapper">
-//       <h3>Tanks list</h3>
-//       <ul>
-//         {props.tanks.map((tank, i) => {
-//           return (<div key={i} className="tankWrapper"> 
-//               <li>{tank.name}</li> 
-//               <button onClick={props.removetank} className="delete btn btn-danger btn-small">delete</button>
-//             </div>)
-//         })}   
-//       </ul>
-//     </div>
-//   )
-// }
-
-
-// export default Tanks;
