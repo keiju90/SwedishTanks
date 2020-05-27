@@ -1,5 +1,5 @@
 const express = require("express");
-
+var cors = require("cors");
 const middlewares = require("./middlewares")
 const routes = require("./routes")
 const db = require("./models")
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
   req.models = db.models
   next()
 })
-
+app.use(cors());
 app.use('/', routes)
 app.use(middlewares.mongoError)
 app.use(middlewares.error)

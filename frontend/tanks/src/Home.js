@@ -1,25 +1,29 @@
-import React, { Component } from 'react'
-import 'bootstrap/dist/css/bootstrap.css';
-import Tankoftheweek from "./Tankoftheweek"
+import React, { Component } from 'react';
 
-export default class Home extends Component {
-    callAPI() {
-        fetch("http://localhost:4000/tanks")
-            .then(res => res.json())
-            .then(res => this.setState({ apiResponse: res }));
-    }
-    
-    componentWillMount() {
-        this.callAPI();
-    }
+import Tanks from "./Tanks";
 
-    render() {
-        return (
-            <div>
-                <p>Inside home </p>
-                <Tankoftheweek></Tankoftheweek>
-            </div>
-        )
-    }
+class Home extends Component {
+
+  state = {
+    tanks: []
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:4000/tanks')
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({ tanks: data })
+    })
+    .catch(console.log)
+  }
+
+  render() {
+    return (
+      <div>
+      <Tanks tanks={this.state.tanks}/>
+      </div>
+    );
+  }
 }
-//componentdidmount
+
+export default Home;
