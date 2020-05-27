@@ -1,5 +1,5 @@
 const express = require("express");
-
+var cors = require("cors");
 const middlewares = require("./middlewares")
 const routes = require("./routes")
 const db = require("./models")
@@ -7,7 +7,7 @@ const db = require("./models")
 const app = express();
 
 // environment variable PORT or 3000 if unset
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 // Add middleware for parsing the body to req.body
 // middlewares are executed in the order added, so add before routes
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
   req.models = db.models
   next()
 })
-
+app.use(cors());
 app.use('/', routes)
 app.use(middlewares.mongoError)
 app.use(middlewares.error)
