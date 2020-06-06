@@ -1,0 +1,227 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: SwedishTanks
+  description: |
+    An API that implements [jsonplaceholder](https://jsonplaceholder.typicode.com/) post and users endpoints, backed by a mongo database. 
+    
+    The purpose for this API is educational and meant as a step between using jsonplaceholder in a UI and implementing your own API.
+
+    The following limitations appply:
+    - Sequential id is not considered good practice and is only implemented to provide a sequence of id:s. No guarantee is given that id's are unique in any way. Students should start using  uuids as part of the course and rely on `_id` instead
+  license:
+    name: MIT
+servers:
+- url: http://localhost:3000
+paths:
+  /tanks:
+    get:
+      summary: List tanks
+      operationId: listTanks
+      tags:
+      - tanks
+      parameters:
+      - name: tankId
+        in: query
+        description: filter by tank id
+        required: false
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: Array of tanks
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/ResponseTanks"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      summary: Create a Tank
+      operationId: createTank
+      tags:
+      - tanks
+      requestBody:
+        description: the tank to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tank'
+      responses:
+        '201':
+          description: The created Tank
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/ResponseTank"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /tanks/{tankId}:
+    get:
+      summary: Get a Tank
+      operationId: getTank
+      tags:
+        - tanks
+      parameters:
+      - name: tankId
+        in: path
+        description: tank id
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: The found tank
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/ResponseTank"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      summary: Replace a Tank
+      operationId: putTank
+      tags:
+      - tanks
+      parameters:
+      - name: tankId
+        in: path
+        description: tank id
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: the tank to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tank'
+      responses:
+        '200':
+          description: The replaced tank
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/ResponseTank"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      summary: Update a Tank
+      operationId: patchTank
+      tags:
+        - tanks
+      parameters:
+      - name: tankId
+        in: path
+        description: tank id
+        required: true
+        schema:
+          type: integer
+          format: int32
+      requestBody:
+        description: the tank to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Tank'
+      responses:
+        '200':
+          description: The updated tank
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/ResponseTank"
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      summary: Delete a Tank
+      operationId: deleteTank
+      tags:
+        - tanks
+      parameters:
+      - name: tankId
+        in: path
+        description: tank Id
+        required: true
+        schema:
+          type: integer
+          format: int32
+      responses:
+        '200':
+          description: The deleted Tank
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/ResponseTank"
+        '204':
+          description: No change (nothing was deleted)
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Tank:
+      type: object
+      properties:
+        tankname:
+          type: string
+        crew:
+          type: number
+        velocity:
+          type: number
+        horsepower:
+          type: number
+        tankId:
+          type: integer
+    ResponseTank:
+      allOf:
+      - $ref: "#/components/schemas/Tank"
+      - properties:
+          id:
+            type: integer
+          _id:
+            type: string
+            format: uuid
+    ResponseTanks:
+      type: array
+      items:
+        $ref: "#/components/schemas/ResponseTank"
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

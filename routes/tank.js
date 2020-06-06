@@ -16,13 +16,14 @@ get = (req, res, next) => {
     }).catch((error) => 
 	next(error)
     )}
- 
+let number = 0;
 post=(req,res,next)=>{
-req.models.Tank.create({
+  req.models.Tank.create({
   tankname: req.body.tankname,
   crew: req.body.crew,
   velocity: req.body.velocity,
   horsepower: req.body.horsepower,
+  tankId: number +1
  //tankname:{
 // crew:req.body.tankname.crew,
  //velocity:req.body.tankname.velocity,
@@ -50,10 +51,12 @@ deleteById = (req, res, next) => {
 
 put = (req, res, next) => {
   req.models.Tank.updateOne({_id: req.params.id},
-    { tankname: req.body.tankname,
+    {
+      tankname: req.body.tankname,
       crew: req.body.crew,
       velocity: req.body.velocity,
-      horsepower: req.body.horsepower
+      horsepower: req.body.horsepower,
+      tankId:req.body.tankId
 
     },{
       new: true,
