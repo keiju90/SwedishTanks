@@ -3,13 +3,15 @@ import React from 'react'
     const Tanks = ({ tanks }) => {
       return (
         <div>
-          <h1>Tanks List</h1>
+          <h3>Resultat</h3>
+          <br></br>
+          
           {tanks.map((tank) => (
             <div>
               <div>
-                <h3>{tank.tankname}</h3>
-                <h6>{tank.crew}</h6>
-                <h6>{tank.velocity}</h6>
+                <h5 className="text-success">Tanknamn: {tank.tankname}</h5>
+                <p>Besättning antal: {tank.crew}</p>
+                <p>Hastighet: {tank.velocity}</p>
               </div>
             </div>
           ))} 

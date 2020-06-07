@@ -8,7 +8,7 @@ export default class Header extends Component {
         <nav className="navbar navbar-expand-lg navbar-light" style={{
             backgroundColor: '#484747'
                                 }}> 
-        <Link to="/" className="navbar-brand" style={{color: "#c2d671" }}>
+        <Link to="/" className="navbar-brand font-weight-bold"  style={{color: "#c2d671"}}>
             Swedish Tanks 
         </Link>
 

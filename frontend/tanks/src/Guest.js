@@ -6,7 +6,7 @@ export default class Guest extends Component {
     render() {
         return (
             <div>
-                <p>Inside Guest</p>
+                {/* <p>Inside Guest</p> */}
                 <SearchTable>
                 </SearchTable>
                 <ResultTable></ResultTable>

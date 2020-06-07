@@ -15,7 +15,8 @@ function App() {
     <div className="App" 
     style={{backgroundColor: '#dddddd'}}>
       <Header></Header>
-      <main>
+      {/* // style, so that the gray backround reaches all the way down */}
+      <main style={{ height:"1000px" }}>
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path="/guest" component={Guest}/> 

@@ -19,7 +19,7 @@ class Resultspage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="p-3">
       <Tanks tanks={this.state.tanks}/>
       </div>
     );
