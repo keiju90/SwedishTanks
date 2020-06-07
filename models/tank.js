@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
- 
+
 const tankSchema = new mongoose.Schema({
   tankname: {
     type: String,
@@ -16,9 +16,12 @@ const tankSchema = new mongoose.Schema({
   horsepower: {
     type: Number,
     required: true
-}
+  },
+  tankId: {
+    type: Number,
+  }
 });
- 
+
 const Tank = mongoose.model('Tank', tankSchema);
- 
+
 module.exports = Tank;
