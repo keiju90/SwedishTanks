@@ -1,14 +1,10 @@
 //dotify = require('node-dotify');
-
-getTankById = (req, res, next) => {
-  req.models.Tank.findById(req.params._id,req.body)
-    .then((tank) => {
-              return res.send(tank);
-          }).catch((error) => {
-              next(error)
-          })
+  getById=(req,res,next) => {
+    req.models.Tank.findById(req.params.id).then((tank) => {
+    return res.send(tank);
+    }).catch((error) => next(error))
 }
-
+    
 get = (req, res, next) => {
   var query;
   if(req.query.tankname) {
@@ -18,13 +14,13 @@ get = (req, res, next) => {
   {
     query = req.models.Tank.find()
   }
-
-
-  query.exec().then((tanks) => {
+    query.exec().then((tanks) => {
       return res.send(tanks);
-    }).catch((error) => 
-	next(error)
-)}
+    }).catch((error) =>
+      next(error)
+  )
+}
+    
 let number = 0;
 post=(req,res,next)=>{
   req.models.Tank.create({
@@ -43,12 +39,7 @@ return res.status(201).send(tank)
 }).catch((error)=>{
 next(error)})
 }
- 
-getById=(req,res,next) => {
-req.models.Tank.findById(req.params.id).then((tank) => {
-return res.send(tank);
-}).catch((error) => next(error))
-}
+
 
 deleteById = (req, res, next) => {
   req.models.Tank.findByIdAndDelete(req.params.id).then((deleted)=> {
@@ -65,7 +56,7 @@ put = (req, res, next) => {
       crew: req.body.crew,
       velocity: req.body.velocity,
       horsepower: req.body.horsepower,
-      //tankId:req.body.tankId
+      tankId:req.body.tankId
 
     },{
       new: true,
