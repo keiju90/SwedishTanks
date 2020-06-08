@@ -8,7 +8,7 @@ router.get("/", start.welcome);
 
 router.post("/tanks", tank.post)
 router.get("/tanks", tank.get)
-router.get("/tanks/:id", tank.getById)
+router.get("/tanks/_:id", tank.getById)
 router.delete("/tanks/:id", tank.deleteById)
 router.put("/tanks/:id", tank.put)
 router.patch("/tanks/:id", tank.patch)

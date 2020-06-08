@@ -28,9 +28,9 @@ app.use((req, res, next) => {
 app.use(cors());
 app.use('/', routes)
 app.use('/api', routes)
-// app.use(middlewares.mongoError)
-// app.use(middlewares.error)
-// app.use(middlewares.notfound)
+app.use(middlewares.mongoError)
+app.use(middlewares.error)
+app.use(middlewares.notfound)
 
 // Start up the database, then the server and begin listen to requests
 db.connectDb().then(() => {
