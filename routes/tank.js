@@ -1,5 +1,14 @@
 //dotify = require('node-dotify');
 
+getTankById = (req, res, next) => {
+  req.models.Tank.findById(req.params._id,req.body)
+    .then((tank) => {
+              return res.send(tank);
+          }).catch((error) => {
+              next(error)
+          })
+}
+
 get = (req, res, next) => {
   var query;
   if(req.query.tankname) {
@@ -15,7 +24,7 @@ get = (req, res, next) => {
       return res.send(tanks);
     }).catch((error) => 
 	next(error)
-    )}
+)}
 let number = 0;
 post=(req,res,next)=>{
   req.models.Tank.create({
@@ -56,7 +65,7 @@ put = (req, res, next) => {
       crew: req.body.crew,
       velocity: req.body.velocity,
       horsepower: req.body.horsepower,
-      tankId:req.body.tankId
+      //tankId:req.body.tankId
 
     },{
       new: true,
